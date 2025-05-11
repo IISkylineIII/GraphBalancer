@@ -1,0 +1,27 @@
+ef min_edges_to_balance(graph):
+    in_degree = {}
+    out_degree = {}
+
+    for node, neighbors in graph.items():
+        out_degree[node] = len(neighbors)
+        if node not in in_degree:
+            in_degree[node] = 0
+        for neighbor in neighbors:
+            if neighbor not in in_degree:
+                in_degree[neighbor] = 0
+            in_degree[neighbor] += 1
+
+    differences = [abs(in_degree[node] - out_degree[node]) for node in graph]
+
+    return sum(differences) // 2
+
+graph = {
+    1: [2, 3, 5],
+    2: [4],
+    3: [2, 5],
+    4: [1, 2, 5],
+    5: [3]
+}
+
+min_edges = min_edges_to_balance(graph)
+print("Minimum number of edges needed:", min_edges)
