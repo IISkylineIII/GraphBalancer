@@ -1,4 +1,4 @@
-ef min_edges_to_balance(graph):
+def min_edges_to_balance(graph):
     in_degree = {}
     out_degree = {}
 
